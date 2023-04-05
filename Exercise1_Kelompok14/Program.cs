@@ -127,6 +127,22 @@ namespace Insert_and_Get_Data
                 Console.WriteLine();
             }
         }
+        public void insert(string Id, string Nma, string Almt, string jk, string notlpn, SqlConnection con)
+        {
+            string str = "";
+            str = "insert into dbo.Pembeli (Id,Nama,Alamat,Sex,Phone)"
+                + "values(@Id,@nma,@alamat,@JK,@Phn)";
+            SqlCommand cmd = new SqlCommand(str, con);
+            cmd.CommandType = CommandType.Text;
+
+            cmd.Parameters.Add(new SqlParameter("Id", Id));
+            cmd.Parameters.Add(new SqlParameter("nma", Nma));
+            cmd.Parameters.Add(new SqlParameter("alamat", Almt));
+            cmd.Parameters.Add(new SqlParameter("JK", jk));
+            cmd.Parameters.Add(new SqlParameter("Phn", notlpn));
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Data Berhasil Ditambahkan");
+        }
     }
     
 }
