@@ -111,7 +111,21 @@ namespace Insert_and_Get_Data
                     Console.WriteLine("Tidak Dapat Mengakses Database Menggunakan User Tersebut\n");
                     Console.ResetColor();
                 }
+            }
         }
+
+        public void baca(SqlConnection con)
+        {
+            SqlCommand cmd = new SqlCommand("Select * From dbo.Pembeli", con);
+            SqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                for (int i = 0; i < r.FieldCount; i++)
+                {
+                    Console.WriteLine(r.GetValue(i));
+                }
+                Console.WriteLine();
+            }
         }
     }
     
